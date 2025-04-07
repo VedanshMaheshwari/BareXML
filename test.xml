@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<struct name="UltimateChaos">
+    <description>The ultimate broken and overloaded structure</description>
+
+    <field name="username" type="string" />
+    <field name="password" type="string" encrypted="yes" strength="high" />
+    <field name="lastLogin" type="datetime" />
+    
+    <!-- Wrong component inserted -->
+    <metadata createdBy="admin" lastUpdated="never" />
+
+    <!-- Invalid nesting: array inside field -->
+    <field name="illegalArrayInField" type="string">
+        <array name="IllegalArray">
+            <struct name="InnerStruct">
+                <field name="oops" type="string" />
+            </struct>
+        </array>
+    </field>
+
+    <!-- Extra unknown tags -->
+    <randomElement prop="value" />
+    <config setting="true" mode="unknown" />
+    <brokenTag name="test"></brokenTagg> <!-- Typo in closing tag -->
+
+    <!-- Bad attributes -->
+    <field name="score" type="float" color="red" speed="hyperspeed" invisible="true" />
+
+    <!-- A CDATA section randomly thrown in -->
+    <![CDATA[Some random notes that should not exist]]>
+
+    <!-- Products Array -->
+    <array name="Products">
+        <struct name="Product">
+            <field name="id" type="int" />
+            <field name="name" type="string" />
+            <field name="price" type= /> <!-- missing value -->
+            <description>Product details inside struct</description>
+            <unknownBlock randomAttribute="random" />
+        </struct>
+    </array>
+    
+    <!-- Nested unknown components -->
+    <struct name="MysteryBox">
+        <mystery key="value" />
+        <field name="secretCode" type="string" />
+        <anotherRandomTag />
+    </struct>
+
+    <!-- Floating nonsense -->
+    <float>What is this even?</float>
+
+    <!-- Multiple wrong layers -->
+    <array name="Confusion">
+        <magic spell="abracadabra">
+            <randomThing />
+        </magic>
+        <field name="randomFieldInsideArray" type="string" />
+    </array>
+
+    <!-- Text spam -->
+    Completely random text just floating here without any reason.
+
+</struct>
